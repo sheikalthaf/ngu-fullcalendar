@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { NguCalendar } from './calendar.component';
+import { NguCalendar } from './calendar';
 import { NguCalendarEvent } from './calendar-events';
 
 @NgModule({

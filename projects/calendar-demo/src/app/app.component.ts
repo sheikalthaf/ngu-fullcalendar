@@ -1,7 +1,12 @@
 import { Component, ViewChild, AfterViewInit } from '@angular/core';
-import { NguCalendar } from 'projects/calendar/src/public-api';
+import {
+  NguCalendar,
+  CalendarDefaultView
+} from 'projects/calendar/src/public-api';
 import { OptionsInput } from '@fullcalendar/core';
 import dayGridPlugin from '@fullcalendar/daygrid';
+import timeGridPlugin from '@fullcalendar/timegrid';
+import listGridPlugin from '@fullcalendar/list';
 import { DateClickApi } from '@fullcalendar/core/Calendar';
 import { EventSourceInput } from '@fullcalendar/core/structs/event-source';
 import { AppService } from './app.service';
@@ -19,7 +24,8 @@ export class AppComponent implements AfterViewInit {
   events: EventSourceInput[] = [];
 
   options: OptionsInput = {
-    plugins: [dayGridPlugin]
+    plugins: [dayGridPlugin, timeGridPlugin, listGridPlugin],
+    defaultView: 'dayGridMonth' as CalendarDefaultView
   };
 
   constructor(private appService: AppService) {
@@ -28,9 +34,17 @@ export class AppComponent implements AfterViewInit {
     }, 3000);
   }
 
+  dateClicked(args) {
+    console.log(args);
+  }
+
+  eventRenderer(args) {
+    console.log(args);
+  }
+
   ngAfterViewInit() {
-    this.calendar
-      .event<DateClickApi>('eventRender')
-      .subscribe(res => console.log(res));
+    // this.calendar
+    //   .event<DateClickApi>('eventRender')
+    //   .subscribe(res => console.log(res));
   }
 }

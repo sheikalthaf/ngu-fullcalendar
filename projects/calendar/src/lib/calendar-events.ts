@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, OnDestroy } from '@angular/core';
-import { NguCalendar } from './calendar.component';
+import { NguCalendar } from './calendar';
 import { EventApi } from '@fullcalendar/core';
 
 @Component({
