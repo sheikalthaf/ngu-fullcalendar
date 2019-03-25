@@ -1,0 +1,11 @@
+<h1>Fullcalendar Demo</h1>
+<button (click)="events.pop()">Remove Event</button>
+
+<div style="width: 500px">
+  <ngu-fullcalendar [options]="options">
+    <ngu-fullcalendar-event
+      [event]="event"
+      *ngFor="let event of events"
+    ></ngu-fullcalendar-event>
+  </ngu-fullcalendar>
+</div>
